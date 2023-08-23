@@ -1,0 +1,19 @@
+{
+  "name": "pinia-orm-helpers",
+  "version": "0.0.3",
+  "module": "index.ts",
+  "type": "module",
+  "repository": "git@github.com:quasar-army/pinia-orm-helpers.git",
+  "author": "Luke Diebold <luke@ldiebold.com>",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "eslint": "^8.10.0",
+    "eslint-config-standard": "^17.0.0",
+    "pinia-orm": "^1.6.0",
+    "vue": "^3.0.0"
+  }
+}
