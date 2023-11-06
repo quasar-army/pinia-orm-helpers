@@ -4,6 +4,7 @@ export { getClassRelationships } from './utils/getClassRelationships'
 
 export type { PiniaOrmDecoratorKind } from './types/PiniaOrmDecoratorKind'
 export type { FilterPiniaOrmModelToRelationshipTypes } from './types/FilterPiniaOrmModelToRelationshipTypes'
+export type { FilterPiniaOrmModelToFieldTypes } from './types/FilterPiniaOrmModelToFieldTypes'
 
 export type { DeclassifyPiniaOrmModel } from './types/DeclassifyPiniaOrmModel'
 export type { DeclassifyPiniaOrmModels } from './types/DeclassifyPiniaOrmModels'

@@ -9,7 +9,7 @@
   "scripts": {
     "release": "bumpp && npm publish"
   },
-  "dependencies": {
+  "peerDependencies": {
     "pinia-orm": "^1.6.0",
     "vue": "^3.0.0"
   },
