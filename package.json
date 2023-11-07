@@ -5,12 +5,21 @@
   "repository": "git@github.com:quasar-army/pinia-orm-helpers.git",
   "author": "Luke Diebold <luke@ldiebold.com>",
   "license": "MIT",
+  "sideEffects": false,
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
+    "build": "unbuild",
     "release": "bumpp && npm publish"
   },
   "peerDependencies": {
@@ -18,11 +27,12 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "bumpp": "^9.2.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
+    "bumpp": "^9.2.0",
     "eslint": "^8.10.0",
     "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-vue": "^9.0.0"
+    "eslint-plugin-vue": "^9.0.0",
+    "unbuild": "^2.0.0"
   }
 }
