@@ -1,11 +1,15 @@
 {
   "name": "pinia-orm-helpers",
-  "version": "0.0.4",
-  "module": "index.ts",
+  "version": "0.0.5",
   "type": "module",
   "repository": "git@github.com:quasar-army/pinia-orm-helpers.git",
   "author": "Luke Diebold <luke@ldiebold.com>",
   "license": "MIT",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "release": "bumpp && npm publish"
   },
