@@ -17,7 +17,7 @@ export function getClassRelationships<ModelType extends typeof Model> (
       }
       return [key, definition]
     })
-    .filter(([_key, schema]) => typeof schema === 'object' ? !schema.isRelationship : false)) as Record<
+    .filter(([_key, schema]) => typeof schema === 'object' ? schema.isRelationship : false)) as Record<
       keyof FilterPiniaOrmModelToRelationshipTypes<InstanceType<ModelType>>,
       Relation & { kind: PiniaOrmDecoratorKind, isRelationship: boolean, key: string }
     >
