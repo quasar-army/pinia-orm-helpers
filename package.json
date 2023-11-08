@@ -6,7 +6,8 @@
   "author": "Luke Diebold <luke@ldiebold.com>",
   "license": "MIT",
   "sideEffects": false,
-  "main": "./dist/index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
