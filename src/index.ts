@@ -1,6 +1,7 @@
 export { getClassAttributes } from './utils/getClassAttributes'
 export { getClassFields } from './utils/getClassFields'
 export { getClassRelationships } from './utils/getClassRelationships'
+export { ObjectCast } from './casts/ObjectCast'
 
 export type { PiniaOrmDecoratorKind } from './types/PiniaOrmDecoratorKind'
 export type { FilterPiniaOrmModelToRelationshipTypes } from './types/FilterPiniaOrmModelToRelationshipTypes'

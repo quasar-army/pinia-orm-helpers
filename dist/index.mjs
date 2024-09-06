@@ -1,4 +1,4 @@
-import { Relation } from 'pinia-orm';
+import { Relation, CastAttribute } from 'pinia-orm';
 
 function getClassAttributes(PiniaOrmClass) {
   const fields = new PiniaOrmClass().$fields();
@@ -36,7 +36,31 @@ function getClassRelationships(PiniaOrmClass) {
       key
     };
     return [key, definition];
-  }).filter(([_key, schema]) => typeof schema === "object" ? !schema.isRelationship : false));
+  }).filter(([_key, schema]) => typeof schema === "object" ? schema.isRelationship : false));
 }
 
-export { getClassAttributes, getClassFields, getClassRelationships };
+class ObjectCast extends CastAttribute {
+  /**
+   * Create a new String attribute instance.
+   */
+  constructor(attributes) {
+    super(attributes);
+  }
+  get(value) {
+    if (value?.startsWith?.("[")) {
+      return {};
+    }
+    return typeof value !== "string" ? value : JSON.parse(value);
+  }
+  /**
+   * Make the value for the attribute.
+   */
+  set(value) {
+    if (value?.startsWith?.("[")) {
+      return "{}";
+    }
+    return JSON.stringify(value);
+  }
+}
+
+export { ObjectCast, getClassAttributes, getClassFields, getClassRelationships };

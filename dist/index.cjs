@@ -38,9 +38,34 @@ function getClassRelationships(PiniaOrmClass) {
       key
     };
     return [key, definition];
-  }).filter(([_key, schema]) => typeof schema === "object" ? !schema.isRelationship : false));
+  }).filter(([_key, schema]) => typeof schema === "object" ? schema.isRelationship : false));
 }
 
+class ObjectCast extends piniaOrm.CastAttribute {
+  /**
+   * Create a new String attribute instance.
+   */
+  constructor(attributes) {
+    super(attributes);
+  }
+  get(value) {
+    if (value?.startsWith?.("[")) {
+      return {};
+    }
+    return typeof value !== "string" ? value : JSON.parse(value);
+  }
+  /**
+   * Make the value for the attribute.
+   */
+  set(value) {
+    if (value?.startsWith?.("[")) {
+      return "{}";
+    }
+    return JSON.stringify(value);
+  }
+}
+
+exports.ObjectCast = ObjectCast;
 exports.getClassAttributes = getClassAttributes;
 exports.getClassFields = getClassFields;
 exports.getClassRelationships = getClassRelationships;

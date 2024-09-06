@@ -2,6 +2,8 @@ import { Model, Relation } from 'pinia-orm'
 import { PiniaOrmDecoratorKind } from '../types/PiniaOrmDecoratorKind'
 import { FilterPiniaOrmModelToRelationshipTypes } from '../'
 
+export type RelationshipDefinition = Relation & { kind: PiniaOrmDecoratorKind, isRelationship: boolean, key: string }
+
 export function getClassRelationships<ModelType extends typeof Model> (
   PiniaOrmClass: ModelType,
 ) {
@@ -19,6 +21,6 @@ export function getClassRelationships<ModelType extends typeof Model> (
     })
     .filter(([_key, schema]) => typeof schema === 'object' ? schema.isRelationship : false)) as Record<
       keyof FilterPiniaOrmModelToRelationshipTypes<InstanceType<ModelType>>,
-      Relation & { kind: PiniaOrmDecoratorKind, isRelationship: boolean, key: string }
+      RelationshipDefinition
     >
 }
