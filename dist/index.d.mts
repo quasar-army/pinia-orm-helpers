@@ -1,4 +1,4 @@
-import { Model, Type, Attribute, Relation, CastAttribute, ModelFields } from 'pinia-orm';
+import { Model, Type, Attribute, Relation, BelongsToMany, HasMany, HasManyBy, HasManyThrough, HasOne, BelongsTo, MorphMany, MorphOne, MorphTo, MorphToMany, CastAttribute, ModelFields } from 'pinia-orm';
 
 type PiniaOrmDecoratorKind = 'Attr' | 'Str' | 'Num' | 'Bool' | 'Uid' | 'HasOne' | 'BelongsTo' | 'BelongsToMany' | 'HasMany' | 'HasManyBy' | 'HasManyThrough' | 'MorphOne' | 'MorphTo' | 'MorphToMany' | 'MorphMany';
 
@@ -14,7 +14,7 @@ declare function getClassFields<ModelType extends typeof Model>(PiniaOrmClass: M
     key: string;
 }>;
 
-type RelationshipDefinition = Relation & {
+type RelationshipDefinition = Relation & (BelongsToMany | HasMany | HasManyBy | HasManyThrough | HasOne | BelongsTo | MorphMany | MorphOne | MorphTo | MorphToMany) & {
     kind: PiniaOrmDecoratorKind;
     isRelationship: boolean;
     key: string;
@@ -49,4 +49,4 @@ type DeclassifyPiniaOrmModels<T> = T extends Model ? DeclassifyPiniaOrmModel<T> 
 
 type PiniaOrmForm<T extends Model> = Partial<Omit<DeclassifyPiniaOrmModel<T>, keyof FilterPiniaOrmModelToRelationshipTypes<T>>>;
 
-export { type DeclassifyPiniaOrmModel, type DeclassifyPiniaOrmModels, type FilterPiniaOrmModelToFieldTypes, type FilterPiniaOrmModelToRelationshipTypes, ObjectCast, type PiniaOrmDecoratorKind, type PiniaOrmForm, type RemoveIndex, getClassAttributes, getClassFields, getClassRelationships };
+export { type DeclassifyPiniaOrmModel, type DeclassifyPiniaOrmModels, type FilterPiniaOrmModelToFieldTypes, type FilterPiniaOrmModelToRelationshipTypes, ObjectCast, type PiniaOrmDecoratorKind, type PiniaOrmForm, type RelationshipDefinition, type RemoveIndex, getClassAttributes, getClassFields, getClassRelationships };
