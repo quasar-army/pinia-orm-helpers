@@ -1,10 +1,20 @@
 import { Model, Relation, BelongsToMany, HasMany, HasManyBy, HasManyThrough, HasOne, BelongsTo, MorphMany, MorphOne, MorphTo, MorphToMany } from 'pinia-orm'
-import { PiniaOrmDecoratorKind } from '../types/PiniaOrmDecoratorKind'
 import { FilterPiniaOrmModelToRelationshipTypes } from '../'
 
 export type RelationshipDefinition = Relation &
-  (BelongsToMany | HasMany | HasManyBy | HasManyThrough | HasOne | BelongsTo | MorphMany | MorphOne | MorphTo | MorphToMany)
-  & { kind: PiniaOrmDecoratorKind, isRelationship: boolean, key: string }
+  (
+    BelongsToMany & { kind: 'BelongsToMany' } |
+    HasMany & { kind: 'HasMany' } | 
+    HasManyBy & { kind: 'HasManyBy' } | 
+    HasManyThrough & { kind: 'HasManyThrough' } | 
+    HasOne & { kind: 'HasOne' } | 
+    BelongsTo & { kind: 'BelongsTo' } | 
+    MorphMany & { kind: 'MorphMany' } | 
+    MorphOne & { kind: 'MorphOne' } | 
+    MorphTo & { kind: 'MorphTo' } | 
+    MorphToMany & { kind: 'MorphToMany' }
+  )
+  & { isRelationship: boolean, key: string }
 
 export function getClassRelationships<ModelType extends typeof Model> (
   PiniaOrmClass: ModelType,
