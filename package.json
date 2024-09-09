@@ -1,6 +1,6 @@
 {
   "name": "pinia-orm-helpers",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "type": "module",
   "repository": "git@github.com:quasar-army/pinia-orm-helpers.git",
   "author": "Luke Diebold <luke@ldiebold.com>",
